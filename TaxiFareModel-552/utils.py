@@ -1,5 +1,5 @@
 import numpy as np
-
+from sklearn.metrics import make_scorer
 
 def haversine_vectorized(df,
                          start_lat="pickup_latitude",
@@ -28,3 +28,5 @@ def haversine_vectorized(df,
 
 def compute_rmse(y_pred, y_true):
     return np.sqrt(((y_pred - y_true) ** 2).mean())
+
+sk_rmse = make_scorer(compute_rmse)
