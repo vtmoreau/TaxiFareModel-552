@@ -25,8 +25,11 @@ def haversine_vectorized(df,
     c = 2 * np.arcsin(np.sqrt(a))
     return 6371 * c
 
-
-def compute_rmse(y_pred, y_true):
+def rmse(y_pred, y_true):
     return np.sqrt(((y_pred - y_true) ** 2).mean())
 
-sk_rmse = make_scorer(compute_rmse)
+def neg_rmse(y_pred, y_true):
+    return - 1 * rmse(y_pred, y_true)
+
+sk_rmse = make_scorer(rmse)
+sk_neg_rmse = make_scorer(neg_rmse)

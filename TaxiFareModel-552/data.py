@@ -1,3 +1,4 @@
+import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
@@ -24,9 +25,11 @@ def clean_data(df, test=False):
     df = df[df["dropoff_longitude"].between(left=-74, right=-72.9)]
     return df
 
-def split_data(df):
+def split_data(df, log_target=False):
     X = df.drop(columns="fare_amount")
     y = df.fare_amount
+    if log_target:
+        y = np.log(y)
     return train_test_split(X, y, test_size=0.3)
 
 if __name__ == '__main__':
