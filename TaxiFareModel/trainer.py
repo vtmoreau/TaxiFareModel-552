@@ -15,9 +15,9 @@ from memoized_property import memoized_property
 import mlflow
 from mlflow.tracking import MlflowClient
 # Package Imports
-from data import get_data, clean_data, split_data
-from encoders import TimeFeaturesEncoder, DistanceTransformer
-from utils import sk_rmse, sk_neg_rmse
+from TaxiFareModel.data import get_data, clean_data, split_data
+from TaxiFareModel.encoders import TimeFeaturesEncoder, DistanceTransformer
+from TaxiFareModel.utils import sk_rmse, sk_neg_rmse
 
 mlf_uri = os.getenv("ML_FLOW_URI")
 
